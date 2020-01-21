@@ -26,7 +26,7 @@ import com.robintegg.testcontainersdemo.DemoApplicationTestPropertyValues;
 public class NotificationRepositoryTest {
 
 	@ClassRule
-	public static PostgreSQLContainer<?> postgreSQLContainer = new PostgreSQLContainer<>("postgres:latest");
+	public static PostgreSQLContainer<?> postgreSQLContainer = new PostgreSQLContainer<>("postgres:10");
 
 	@Autowired
 	private NotificationRepository repository;
@@ -68,7 +68,8 @@ public class NotificationRepositoryTest {
 		@Override
 		public void initialize(ConfigurableApplicationContext configurableApplicationContext) {
 
-			DemoApplicationTestPropertyValues.using(postgreSQLContainer)
+			DemoApplicationTestPropertyValues
+			    .using(postgreSQLContainer)
 					.applyTo(configurableApplicationContext.getEnvironment());
 
 		}
